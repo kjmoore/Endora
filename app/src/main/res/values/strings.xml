@@ -2,4 +2,6 @@
     <string name="app_name">Endora</string>
     <string name="action_settings">Settings</string>
     <string name="no_data">No plans created, click the plus to make one now!</string>
+    <string name="successful_day">Successful Day</string>
+    <string name="today">Today\'s Workout</string>
 </resources>
