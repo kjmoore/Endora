@@ -5,13 +5,12 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.trainingplanlist.TrainingPlanListFragment">
+        tools:context=".ui.trainingplanlist.TrainingPlanFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            android:theme="@style/AppBarThemeLight">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"

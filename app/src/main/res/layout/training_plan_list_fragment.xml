@@ -10,21 +10,23 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppBarThemeLight">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="?actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/ToolbarPopUpTheme"
+                app:title="@string/app_name"
+            />
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".activity.MainActivity">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_view"
@@ -34,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+            />
 
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -45,7 +47,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+            />
 
             <TextView
                 android:id="@+id/no_data"
@@ -55,7 +57,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+            />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -65,7 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/plus_icon" />
+            app:srcCompat="@drawable/plus_icon"
+        />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

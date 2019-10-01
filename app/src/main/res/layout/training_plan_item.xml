@@ -24,6 +24,7 @@
             android:layout_marginTop="@dimen/text_margin_large"
             android:fontFamily="sans-serif-smallcaps"
             android:text="@{program.name}"
+            android:textSize="@dimen/large_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Example Program Title" />
@@ -32,6 +33,8 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Title">
@@ -130,6 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
+                android:text="@{days.days[0].name}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day2"
@@ -142,6 +146,7 @@
                 android:id="@+id/day2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{days.days[1].name}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day3"
@@ -154,6 +159,7 @@
                 android:id="@+id/day3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{days.days[2].name}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day4"
@@ -166,6 +172,7 @@
                 android:id="@+id/day4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{days.days[3].name}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day5"
@@ -178,6 +185,7 @@
                 android:id="@+id/day5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{days.days[4].name}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day6"
@@ -190,6 +198,7 @@
                 android:id="@+id/day6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{days.days[5].name}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day7"
@@ -202,6 +211,7 @@
                 android:id="@+id/day7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{days.days[6].name}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -210,5 +220,16 @@
                 app:layout_constraintTop_toTopOf="@+id/day6"
                 tools:text="Sun" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_large"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:background="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit_black_24dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

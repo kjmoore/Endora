@@ -2,4 +2,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin_large">16dp</dimen>
     <dimen name="text_margin_small">8dp</dimen>
+    <dimen name="app_bar_elevation">4dp</dimen>
+    <dimen name="large_text">24sp</dimen>
 </resources>

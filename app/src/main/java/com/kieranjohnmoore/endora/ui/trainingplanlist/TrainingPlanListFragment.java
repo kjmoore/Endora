@@ -1,5 +1,6 @@
 package com.kieranjohnmoore.endora.ui.trainingplanlist;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.loader.app.LoaderManager;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class TrainingPlanListFragment extends Fragment {
@@ -36,15 +39,14 @@ public class TrainingPlanListFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.training_plan_list_fragment, container, false);
 
-        final AppCompatActivity mainActivity = (AppCompatActivity) getActivity();
-        if (mainActivity != null) {
-            mainActivity.setSupportActionBar(binding.toolbar);
+        final Context context = getContext();
+        if (context != null) {
+            final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+            binding.mainView.setLayoutManager(layoutManager);
+            binding.mainView.setAdapter(recyclerView);
+            binding.mainView.addItemDecoration(
+                    new DividerItemDecoration(context, layoutManager.getOrientation()));
         }
-
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        binding.mainView.setLayoutManager(layoutManager);
-        binding.mainView.setAdapter(recyclerView);
-
 
         binding.fab.setOnClickListener(view -> {
             TrainingPlan test = new TrainingPlan();
