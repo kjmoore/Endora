@@ -4,4 +4,7 @@
     <string name="no_data">No plans created, click the plus to make one now!</string>
     <string name="successful_day">Successful Day</string>
     <string name="today">Today\'s Workout</string>
+    <string name="exercise">Select Exercise: </string>
+    <string name="add_sets">No sets added, click the plus to add some!</string>
+    <string name="set_rest_time">Set Rest Time</string>
 </resources>

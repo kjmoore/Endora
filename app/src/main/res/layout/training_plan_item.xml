@@ -14,7 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/Title"
@@ -40,175 +40,175 @@
                 android:id="@+id/image_day_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/today"
+                android:src="@{days.days[0].completed ? @drawable/empty_circle : @drawable/tick_circle}"
                 app:layout_constraintBottom_toBottomOf="@+id/image_highlight_day_0"
                 app:layout_constraintEnd_toEndOf="@+id/image_highlight_day_0"
                 app:layout_constraintStart_toStartOf="@+id/image_highlight_day_0"
                 app:layout_constraintTop_toTopOf="@+id/image_highlight_day_0"
-                android:src="@{days.days[0].completed ? @drawable/empty_circle : @drawable/tick_circle}"
-                tools:src="@drawable/empty_circle"
-                android:contentDescription="@string/today" />
+                tools:src="@drawable/empty_circle" />
 
             <ImageView
                 android:id="@+id/image_highlight_day_0"
                 android:layout_width="42dp"
                 android:layout_height="49dp"
+                android:contentDescription="@string/today"
                 app:layout_constraintEnd_toEndOf="@+id/day1"
                 app:layout_constraintStart_toStartOf="@+id/day1"
                 app:layout_constraintTop_toBottomOf="@+id/day1"
-                app:srcCompat="@drawable/empty_circle"
-                android:contentDescription="@string/today" />
+                app:srcCompat="@drawable/empty_circle" />
 
             <ImageView
                 android:id="@+id/image_day_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[1].completed ? @drawable/empty_circle : @drawable/tick_circle}"
                 app:layout_constraintEnd_toEndOf="@+id/day5"
                 app:layout_constraintStart_toStartOf="@+id/day5"
                 app:layout_constraintTop_toTopOf="@+id/image_day_2"
-                android:src="@{days.days[1].completed ? @drawable/empty_circle : @drawable/tick_circle}"
-                tools:src="@drawable/empty_circle"
-                android:contentDescription="@string/successful_day" />
+                tools:src="@drawable/empty_circle" />
 
             <ImageView
                 android:id="@+id/image_day_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[2].completed ? @drawable/empty_circle : @drawable/tick_circle}"
                 app:layout_constraintEnd_toEndOf="@+id/day4"
                 app:layout_constraintStart_toStartOf="@+id/day4"
                 app:layout_constraintTop_toTopOf="@+id/image_day_3"
-                android:src="@{days.days[2].completed ? @drawable/empty_circle : @drawable/tick_circle}"
-                tools:src="@drawable/empty_circle"
-                android:contentDescription="@string/successful_day" />
+                tools:src="@drawable/empty_circle" />
 
             <ImageView
                 android:id="@+id/image_day_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[3].completed ? @drawable/empty_circle : @drawable/tick_circle}"
                 app:layout_constraintEnd_toEndOf="@+id/day3"
                 app:layout_constraintStart_toStartOf="@+id/day3"
                 app:layout_constraintTop_toTopOf="@+id/image_day_4"
-                android:src="@{days.days[3].completed ? @drawable/empty_circle : @drawable/tick_circle}"
-                tools:src="@drawable/empty_circle"
-                android:contentDescription="@string/successful_day" />
+                tools:src="@drawable/empty_circle" />
 
             <ImageView
                 android:id="@+id/image_day_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[4].completed ? @drawable/empty_circle : @drawable/tick_circle}"
                 app:layout_constraintBottom_toBottomOf="@+id/image_highlight_day_0"
                 app:layout_constraintEnd_toEndOf="@+id/day2"
                 app:layout_constraintStart_toStartOf="@+id/day2"
                 app:layout_constraintTop_toTopOf="@+id/image_highlight_day_0"
-                android:src="@{days.days[4].completed ? @drawable/empty_circle : @drawable/tick_circle}"
-                tools:src="@drawable/empty_circle"
-                android:contentDescription="@string/successful_day" />
+                tools:src="@drawable/empty_circle" />
 
             <ImageView
                 android:id="@+id/image_day_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[5].completed ? @drawable/empty_circle : @drawable/tick_circle}"
                 app:layout_constraintEnd_toEndOf="@+id/day7"
                 app:layout_constraintStart_toStartOf="@+id/day7"
                 app:layout_constraintTop_toTopOf="@+id/image_day_6"
-                android:src="@{days.days[5].completed ? @drawable/empty_circle : @drawable/tick_circle}"
-                tools:src="@drawable/tick_circle"
-                android:contentDescription="@string/successful_day" />
+                tools:src="@drawable/tick_circle" />
 
             <ImageView
                 android:id="@+id/image_day_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[6].completed ? @drawable/empty_circle : @drawable/tick_circle}"
                 app:layout_constraintEnd_toEndOf="@+id/day6"
                 app:layout_constraintStart_toStartOf="@+id/day6"
                 app:layout_constraintTop_toTopOf="@+id/image_day_1"
-                android:src="@{days.days[6].completed ? @drawable/empty_circle : @drawable/tick_circle}"
-                tools:src="@drawable/tick_circle"
-                android:contentDescription="@string/successful_day" />
+                tools:src="@drawable/tick_circle" />
 
             <TextView
                 android:id="@+id/day1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                tools:text="Mon"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Mon" />
 
             <TextView
                 android:id="@+id/day2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Tues"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day3"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/day1"
-                app:layout_constraintTop_toTopOf="@+id/day1" />
+                app:layout_constraintTop_toTopOf="@+id/day1"
+                tools:text="Tues" />
 
             <TextView
                 android:id="@+id/day3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Wed"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day4"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/day2"
-                app:layout_constraintTop_toTopOf="@+id/day1" />
+                app:layout_constraintTop_toTopOf="@+id/day1"
+                tools:text="Wed" />
 
             <TextView
                 android:id="@+id/day4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Thurs"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day5"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/day3"
-                app:layout_constraintTop_toTopOf="@+id/day1" />
+                app:layout_constraintTop_toTopOf="@+id/day1"
+                tools:text="Thurs" />
 
             <TextView
                 android:id="@+id/day5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Fri"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day6"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/day4"
-                app:layout_constraintTop_toTopOf="@+id/day1" />
+                app:layout_constraintTop_toTopOf="@+id/day1"
+                tools:text="Fri" />
 
             <TextView
                 android:id="@+id/day6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Sat"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toStartOf="@+id/day7"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/day5"
-                app:layout_constraintTop_toTopOf="@+id/day5" />
+                app:layout_constraintTop_toTopOf="@+id/day5"
+                tools:text="Sat" />
 
             <TextView
                 android:id="@+id/day7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Sun"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/day6"
-                app:layout_constraintTop_toTopOf="@+id/day6" />
+                app:layout_constraintTop_toTopOf="@+id/day6"
+                tools:text="Sun" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

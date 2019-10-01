@@ -21,22 +21,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class TrainingPlanListFragment extends Fragment {
     private static final String TAG = TrainingPlanListFragment.class.getSimpleName();
+
+    private final TrainingPlanListRecyclerView recyclerView = new TrainingPlanListRecyclerView();
+    private TrainingPlanListFragmentBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        final TrainingPlanListFragmentBinding binding =
-                DataBindingUtil.inflate(inflater, R.layout.training_plan_list_fragment, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.training_plan_list_fragment, container, false);
 
         final AppCompatActivity mainActivity = (AppCompatActivity) getActivity();
         if (mainActivity != null) {
             mainActivity.setSupportActionBar(binding.toolbar);
         }
+
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        binding.mainView.setLayoutManager(layoutManager);
+        binding.mainView.setAdapter(recyclerView);
+
+
         binding.fab.setOnClickListener(view -> {
             TrainingPlan test = new TrainingPlan();
             test.name = Double.toString(Math.random());
@@ -60,5 +69,12 @@ public class TrainingPlanListFragment extends Fragment {
 
     private void onTrainingPlansChanged(List<TrainingPlan> trainingPlans) {
         Log.e(TAG, "Training plans changed: " + Arrays.toString(trainingPlans.toArray()));
+        recyclerView.updateTrainingPlans(trainingPlans);
+
+        binding.progressBar.setVisibility(View.INVISIBLE);
+
+        if (trainingPlans.size() > 0) {
+            binding.noData.setVisibility(View.INVISIBLE);
+        }
     }
 }

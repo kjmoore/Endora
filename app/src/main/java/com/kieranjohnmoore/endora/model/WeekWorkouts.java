@@ -12,7 +12,7 @@ public class WeekWorkouts {
     }
     public Day[] days = new Day[7];
 
-    WeekWorkouts() {
+    public WeekWorkouts() {
         for (int i = 0; i < days.length; i++) {
             days[i] = new Day("", false);
         }
@@ -22,7 +22,7 @@ public class WeekWorkouts {
         days[3].name = "Thur"; days[3].completed = true;
         days[4].name = "Fri"; days[4].completed = true;
         days[5].name = "Sat"; days[5].completed = true;
-        days[6].name = "Sun"; days[7].completed = false;
+        days[6].name = "Sun"; days[6].completed = false;
     }
 
 }
