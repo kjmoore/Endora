@@ -12,6 +12,7 @@ import com.kieranjohnmoore.endora.model.ExerciseSet;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,6 +55,12 @@ public class ExerciseSetRecyclerView extends RecyclerView.Adapter<ExerciseSetRec
         ExerciseSetViewHolder(ExerciseSetItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+
+        private void bind(@NonNull final ExerciseSet set, int id) {
+            this.set = set;
+            this.id = id;
+
             binding.repsNumberField.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -62,17 +69,24 @@ public class ExerciseSetRecyclerView extends RecyclerView.Adapter<ExerciseSetRec
                 @Override
                 public void afterTextChanged(Editable s) {
                     Log.v(TAG, "Setting reps to:" + s.toString());
-                    AppDatabase.getExecutor().execute(() -> {
-                        set.numberOfReps = Integer.parseInt(s.toString());
-                        AppDatabase.getInstance(binding.getRoot().getContext()).exerciseSetDao().updateExerciseSet(set);
-                    });
+                    set.numberOfReps = Integer.parseInt(s.toString());
                 }
             });
-        }
+            binding.weightNumberField.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) { }
+                @Override
+                public void afterTextChanged(Editable s) {
+                    Log.v(TAG, "Setting weight to:" + s.toString());
+                    set.weight = Integer.parseInt(s.toString());
+                }
+            });
 
-        private void bind(@NonNull final ExerciseSet set, int id) {
-            this.set = set;
-            this.id = id;
+            binding.repsNumberField.setText(String.format(Locale.getDefault(), "%d", set.numberOfReps));
+            binding.weightNumberField.setText(String.format(Locale.getDefault(), "%d", set.weight));
+
             binding.setSetNumber(id);
             binding.executePendingBindings();
         }

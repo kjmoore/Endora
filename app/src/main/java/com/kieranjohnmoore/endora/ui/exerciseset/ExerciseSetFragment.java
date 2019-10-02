@@ -19,6 +19,7 @@ import com.kieranjohnmoore.endora.model.ExerciseSet;
 import com.kieranjohnmoore.endora.model.TrainingPlan;
 import com.kieranjohnmoore.endora.ui.MainActivity;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -38,6 +39,7 @@ public class ExerciseSetFragment extends Fragment {
     private ExerciseSetFragmentBinding binding;
     private int exerciseId = -1;
     private int dayplayId = -1;
+    private List<ExerciseSet> exerciseSets = Collections.emptyList();
 
     @Nullable
     @Override
@@ -119,7 +121,9 @@ public class ExerciseSetFragment extends Fragment {
                     exercise.name = binding.selectedExercise.toString();
                     exercise.restBetweenSets = Integer.parseInt(binding.restTime.getText().toString());
                     AppDatabase.getInstance(getContext()).exerciseDao().updateExercise(exercise);
-                    //TODO: store all of the changes in the exercise sets too
+                    for (ExerciseSet set : exerciseSets) {
+                        AppDatabase.getInstance(getContext()).exerciseSetDao().updateExerciseSet(set);
+                    }
                 });
                 goBack();
                 break;
@@ -138,6 +142,7 @@ public class ExerciseSetFragment extends Fragment {
     }
 
     private void onExercisesChanged(List<ExerciseSet> exerciseSets) {
+        this.exerciseSets = exerciseSets;
         recyclerView.updateExercises(exerciseSets);
 
         binding.progressBar.setVisibility(View.INVISIBLE);
