@@ -19,7 +19,7 @@ class TrainingDayViewModel extends AndroidViewModel {
 
     private LiveData<List<Exercise>> exercises;
 
-    TrainingDayViewModel(@NonNull Application application, int id) {
+    private TrainingDayViewModel(@NonNull Application application, int id) {
         super(application);
 
         Log.d(TAG, "Created new Day Plan View Model");
@@ -32,7 +32,6 @@ class TrainingDayViewModel extends AndroidViewModel {
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
-
         @NonNull
         private final Application mApplication;
 

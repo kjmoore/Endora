@@ -9,16 +9,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
-import com.kieranjohnmoore.endora.databinding.TrainingDayFragmentBinding;
 import com.kieranjohnmoore.endora.databinding.TrainingPlanFragmentBinding;
+import com.kieranjohnmoore.endora.model.TrainingPlan;
 import com.kieranjohnmoore.endora.model.TrainingPlanDay;
 import com.kieranjohnmoore.endora.ui.MainActivity;
-import com.kieranjohnmoore.endora.ui.trainingplanlist.TrainingPlanListFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,6 +57,7 @@ public class TrainingPlanFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.training_plan_fragment, container, false);
         binding.setTitle(trainingPlanName);
+        binding.planNameEntry.setText(trainingPlanName);
 
         final Context context = getContext();
         if (context != null) {
@@ -74,7 +73,7 @@ public class TrainingPlanFragment extends Fragment {
             test.trainingPlanId = trainingPlanId;
 
             AppDatabase.getExecutor().execute(() -> {
-                AppDatabase.getInstance(getContext()).dayPlanDao().addDayPlan(test);
+                AppDatabase.getInstance(getContext()).trainingPlanDayDao().addDayPlan(test);
                 Snackbar.make(view, "Added: " + test.id, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             });
@@ -110,9 +109,24 @@ public class TrainingPlanFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-            case R.id.done:
                 goBack();
                 break;
+            case R.id.done:
+                AppDatabase.getExecutor().execute(() -> {
+                    final TrainingPlan plan = new TrainingPlan();
+                    plan.id = trainingPlanId;
+                    plan.name = binding.planNameEntry.getText().toString();
+                    AppDatabase.getInstance(getContext()).trainingPlanDao().updateTrainingPlan(plan);
+                });
+                goBack();
+                break;
+            case R.id.delete:
+                AppDatabase.getExecutor().execute(() -> {
+                    final TrainingPlan plan = new TrainingPlan();
+                    plan.id = trainingPlanId;
+                    AppDatabase.getInstance(getContext()).trainingPlanDao().deleteTrainingPlan(plan);
+                });
+                goBack();
             default:
                 break;
         }

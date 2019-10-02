@@ -15,4 +15,7 @@
     <string name="weight">Weight (kg)</string>
     <string name="rest_time">Rest Time</string>
     <string name="done">Done</string>
+    <string name="plan_name">Enter Plan Name</string>
+    <string name="plan_name_label">Plan Name:</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -9,6 +9,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 @Dao
 public interface TrainingPlanDao {
@@ -20,4 +21,6 @@ public interface TrainingPlanDao {
     void deleteTrainingPlan(TrainingPlan trainingPlan);
     @Query("SELECT * FROM training_plans WHERE id = :id")
     LiveData<TrainingPlan> getTrainingPlan(int id);
+    @Update
+    void updateTrainingPlan(TrainingPlan plan);
 }

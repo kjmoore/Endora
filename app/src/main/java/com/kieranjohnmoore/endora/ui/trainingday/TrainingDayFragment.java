@@ -15,6 +15,7 @@ import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.databinding.TrainingDayFragmentBinding;
 import com.kieranjohnmoore.endora.model.Exercise;
+import com.kieranjohnmoore.endora.model.TrainingPlanDay;
 import com.kieranjohnmoore.endora.ui.MainActivity;
 
 import java.util.Arrays;
@@ -111,10 +112,16 @@ public class TrainingDayFragment extends Fragment {
             case R.id.done:
                 goBack();
                 break;
+            case R.id.delete:
+                AppDatabase.getExecutor().execute(() -> {
+                    final TrainingPlanDay day = new TrainingPlanDay();
+                    day.id = trainingDayId;
+                    AppDatabase.getInstance(getContext()).trainingPlanDayDao().deleteDayPlan(day);
+                });
+                goBack();
             default:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

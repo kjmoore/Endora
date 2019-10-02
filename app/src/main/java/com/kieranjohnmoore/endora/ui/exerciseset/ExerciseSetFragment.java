@@ -14,11 +14,13 @@ import com.google.android.material.snackbar.Snackbar;
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.databinding.ExerciseSetFragmentBinding;
+import com.kieranjohnmoore.endora.model.Exercise;
 import com.kieranjohnmoore.endora.model.ExerciseSet;
+import com.kieranjohnmoore.endora.model.TrainingPlan;
 import com.kieranjohnmoore.endora.ui.MainActivity;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,6 +55,7 @@ public class ExerciseSetFragment extends Fragment {
 
         final ExerciseSetViewModel viewModel = new ViewModelProvider(this, factory).get(ExerciseSetViewModel.class);
         viewModel.getSets().observe(this, this::onExercisesChanged);
+        viewModel.getExercise().observe(this, this::onExerciseChanged);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.exercise_set_fragment, container, false);
         binding.setTitle(exerciseName);
@@ -107,9 +110,26 @@ public class ExerciseSetFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-            case R.id.done:
                 goBack();
                 break;
+            case R.id.done:
+                AppDatabase.getExecutor().execute(() -> {
+                    final Exercise exercise = new Exercise();
+                    exercise.id = exerciseId;
+                    exerciseName = binding.selectedExercise.toString();
+                    exercise.restBetweenSets = Integer.parseInt(binding.restTime.getText().toString());
+                    AppDatabase.getInstance(getContext()).exerciseDao().updateExercise(exercise);
+                    //TODO: store all of the changes in the exercise sets too
+                });
+                goBack();
+                break;
+            case R.id.delete:
+                AppDatabase.getExecutor().execute(() -> {
+                    final Exercise exercise = new Exercise();
+                    exercise.id = exerciseId;
+                    AppDatabase.getInstance(getContext()).exerciseDao().deleteExercie(exercise);
+                });
+                goBack();
             default:
                 break;
         }
@@ -125,5 +145,12 @@ public class ExerciseSetFragment extends Fragment {
         if (exerciseSets.size() > 0) {
             binding.noData.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void onExerciseChanged(Exercise exercise) {
+        binding.restTime.setText(String.format(Locale.getDefault(), "%d", exercise.restBetweenSets));
+        binding.setTitle(exercise.name);
+        //TODO: generate this list and fill it
+//        binding.selectedExercise.setSelection(1);
     }
 }

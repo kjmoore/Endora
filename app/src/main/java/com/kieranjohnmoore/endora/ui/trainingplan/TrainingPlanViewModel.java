@@ -14,17 +14,17 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-public class TrainingPlanViewModel extends AndroidViewModel {
+class TrainingPlanViewModel extends AndroidViewModel {
     private static String TAG = TrainingPlanViewModel.class.getSimpleName();
 
     private LiveData<List<TrainingPlanDay>> dayPlans;
 
-    public TrainingPlanViewModel(@NonNull Application application, int id) {
+    private TrainingPlanViewModel(@NonNull Application application, int id) {
         super(application);
 
         Log.d(TAG, "Created new Day Plan View Model");
 
-        dayPlans = AppDatabase.getInstance(this.getApplication()).dayPlanDao().getTrainingPlanDaysForTrainingPlan(id);
+        dayPlans = AppDatabase.getInstance(this.getApplication()).trainingPlanDayDao().getTrainingPlanDaysForTrainingPlan(id);
     }
 
     LiveData<List<TrainingPlanDay>> getDayPlans() {
@@ -38,7 +38,7 @@ public class TrainingPlanViewModel extends AndroidViewModel {
 
         private final int id;
 
-        public Factory(@NonNull Application application, int id) {
+        Factory(@NonNull Application application, int id) {
             mApplication = application;
             this.id = id;
         }

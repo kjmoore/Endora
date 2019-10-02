@@ -19,17 +19,22 @@ class ExerciseSetViewModel extends AndroidViewModel {
     private static String TAG = ExerciseSetViewModel.class.getSimpleName();
 
     private LiveData<List<ExerciseSet>> sets;
+    private LiveData<Exercise> exercise;
 
-    ExerciseSetViewModel(@NonNull Application application, int id) {
+    private ExerciseSetViewModel(@NonNull Application application, int id) {
         super(application);
 
         Log.d(TAG, "Created new Exercise Set View Model");
 
         sets = AppDatabase.getInstance(this.getApplication()).exerciseSetDao().getSetForExercise(id);
+        exercise = AppDatabase.getInstance(this.getApplication()).exerciseDao().getExercie(id);
     }
 
     LiveData<List<ExerciseSet>> getSets() {
         return sets;
+    }
+    LiveData<Exercise> getExercise() {
+        return exercise;
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {

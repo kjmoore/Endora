@@ -5,9 +5,13 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 @Entity(foreignKeys = @ForeignKey(entity = ExerciseSet.class,
         parentColumns = "id",
-        childColumns = "exercises_id"), tableName = "exercise_set")
+        childColumns = "exercises_id",
+        onDelete = CASCADE),
+        tableName = "exercise_set")
 public class ExerciseSet {
     @PrimaryKey(autoGenerate = true)
     public int id;

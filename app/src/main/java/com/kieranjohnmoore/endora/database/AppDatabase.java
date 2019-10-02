@@ -48,5 +48,5 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract TrainingPlanDao trainingPlanDao();
     public abstract ExerciseSetDao exerciseSetDao();
     public abstract ExercisesDao exerciseDao();
-    public abstract TrainingPlanDayDao dayPlanDao();
+    public abstract TrainingPlanDayDao trainingPlanDayDao();
 }
