@@ -12,12 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-public class TrainingPlanViewModel extends AndroidViewModel {
-    private static String TAG = TrainingPlanViewModel.class.getSimpleName();
+public class TrainingPlanListViewModel extends AndroidViewModel {
+    private static String TAG = TrainingPlanListViewModel.class.getSimpleName();
 
     private LiveData<List<TrainingPlan>> trainingPlans;
 
-    public TrainingPlanViewModel(@NonNull Application application) {
+    public TrainingPlanListViewModel(@NonNull Application application) {
         super(application);
 
         Log.d(TAG, "Created new Training Plan View Model");

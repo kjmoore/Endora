@@ -1,37 +1,33 @@
-package com.kieranjohnmoore.endora.ui.dayplan;
+package com.kieranjohnmoore.endora.ui.trainingplan;
 
 import android.app.Application;
 import android.util.Log;
 
 import com.kieranjohnmoore.endora.database.AppDatabase;
-import com.kieranjohnmoore.endora.model.DayPlan;
+import com.kieranjohnmoore.endora.model.TrainingPlanDay;
 
-import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-public class DayPlanViewModel extends AndroidViewModel {
-    private static String TAG = DayPlanViewModel.class.getSimpleName();
+public class TrainingPlanViewModel extends AndroidViewModel {
+    private static String TAG = TrainingPlanViewModel.class.getSimpleName();
 
-    private LiveData<List<DayPlan>> dayPlans;
-    private final int id;
+    private LiveData<List<TrainingPlanDay>> dayPlans;
 
-    public DayPlanViewModel(@NonNull Application application, int id) {
+    public TrainingPlanViewModel(@NonNull Application application, int id) {
         super(application);
 
         Log.d(TAG, "Created new Day Plan View Model");
-        this.id = id;
 
-        dayPlans = AppDatabase.getInstance(this.getApplication()).dayPlanDao().getDayPlansForTrainingPlan(id);
+        dayPlans = AppDatabase.getInstance(this.getApplication()).dayPlanDao().getTrainingPlanDaysForTrainingPlan(id);
     }
 
-    LiveData<List<DayPlan>> getDayPlans() {
+    LiveData<List<TrainingPlanDay>> getDayPlans() {
         return dayPlans;
     }
 
@@ -51,7 +47,7 @@ public class DayPlanViewModel extends AndroidViewModel {
         @NonNull
         public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
             //noinspection unchecked
-            return (T) new DayPlanViewModel(mApplication, id);
+            return (T) new TrainingPlanViewModel(mApplication, id);
         }
     }
 }

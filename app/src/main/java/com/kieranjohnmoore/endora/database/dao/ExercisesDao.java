@@ -1,8 +1,6 @@
 package com.kieranjohnmoore.endora.database.dao;
 
-import com.kieranjohnmoore.endora.model.DayPlan;
 import com.kieranjohnmoore.endora.model.Exercises;
-import com.kieranjohnmoore.endora.model.TrainingPlan;
 
 import java.util.List;
 

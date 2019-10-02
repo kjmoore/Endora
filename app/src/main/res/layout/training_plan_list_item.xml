@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="program"
+            type="com.kieranjohnmoore.endora.model.TrainingPlan" />
+        <variable
+            name="days"
+            type="com.kieranjohnmoore.endora.model.WeekWorkouts" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_large"
+            android:layout_marginTop="@dimen/text_margin_large"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@{program.name}"
+            android:textSize="@dimen/large_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Example Program Title" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Title">
+
+            <ImageView
+                android:id="@+id/image_day_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/today"
+                android:src="@{days.days[0].completed ? @drawable/empty_circle : @drawable/tick_circle}"
+                app:layout_constraintBottom_toBottomOf="@+id/image_highlight_day_0"
+                app:layout_constraintEnd_toEndOf="@+id/image_highlight_day_0"
+                app:layout_constraintStart_toStartOf="@+id/image_highlight_day_0"
+                app:layout_constraintTop_toTopOf="@+id/image_highlight_day_0"
+                tools:src="@drawable/empty_circle" />
+
+            <ImageView
+                android:id="@+id/image_highlight_day_0"
+                android:layout_width="42dp"
+                android:layout_height="49dp"
+                android:contentDescription="@string/today"
+                app:layout_constraintEnd_toEndOf="@+id/day1"
+                app:layout_constraintStart_toStartOf="@+id/day1"
+                app:layout_constraintTop_toBottomOf="@+id/day1"
+                app:srcCompat="@drawable/empty_circle" />
+
+            <ImageView
+                android:id="@+id/image_day_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[1].completed ? @drawable/empty_circle : @drawable/tick_circle}"
+                app:layout_constraintEnd_toEndOf="@+id/day5"
+                app:layout_constraintStart_toStartOf="@+id/day5"
+                app:layout_constraintTop_toTopOf="@+id/image_day_2"
+                tools:src="@drawable/empty_circle" />
+
+            <ImageView
+                android:id="@+id/image_day_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[2].completed ? @drawable/empty_circle : @drawable/tick_circle}"
+                app:layout_constraintEnd_toEndOf="@+id/day4"
+                app:layout_constraintStart_toStartOf="@+id/day4"
+                app:layout_constraintTop_toTopOf="@+id/image_day_3"
+                tools:src="@drawable/empty_circle" />
+
+            <ImageView
+                android:id="@+id/image_day_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[3].completed ? @drawable/empty_circle : @drawable/tick_circle}"
+                app:layout_constraintEnd_toEndOf="@+id/day3"
+                app:layout_constraintStart_toStartOf="@+id/day3"
+                app:layout_constraintTop_toTopOf="@+id/image_day_4"
+                tools:src="@drawable/empty_circle" />
+
+            <ImageView
+                android:id="@+id/image_day_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[4].completed ? @drawable/empty_circle : @drawable/tick_circle}"
+                app:layout_constraintBottom_toBottomOf="@+id/image_highlight_day_0"
+                app:layout_constraintEnd_toEndOf="@+id/day2"
+                app:layout_constraintStart_toStartOf="@+id/day2"
+                app:layout_constraintTop_toTopOf="@+id/image_highlight_day_0"
+                tools:src="@drawable/empty_circle" />
+
+            <ImageView
+                android:id="@+id/image_day_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[5].completed ? @drawable/empty_circle : @drawable/tick_circle}"
+                app:layout_constraintEnd_toEndOf="@+id/day7"
+                app:layout_constraintStart_toStartOf="@+id/day7"
+                app:layout_constraintTop_toTopOf="@+id/image_day_6"
+                tools:src="@drawable/tick_circle" />
+
+            <ImageView
+                android:id="@+id/image_day_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/successful_day"
+                android:src="@{days.days[6].completed ? @drawable/empty_circle : @drawable/tick_circle}"
+                app:layout_constraintEnd_toEndOf="@+id/day6"
+                app:layout_constraintStart_toStartOf="@+id/day6"
+                app:layout_constraintTop_toTopOf="@+id/image_day_1"
+                tools:src="@drawable/tick_circle" />
+
+            <TextView
+                android:id="@+id/day1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="@{days.days[0].name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toStartOf="@+id/day2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Mon" />
+
+            <TextView
+                android:id="@+id/day2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{days.days[1].name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toStartOf="@+id/day3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/day1"
+                app:layout_constraintTop_toTopOf="@+id/day1"
+                tools:text="Tues" />
+
+            <TextView
+                android:id="@+id/day3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{days.days[2].name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toStartOf="@+id/day4"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/day2"
+                app:layout_constraintTop_toTopOf="@+id/day1"
+                tools:text="Wed" />
+
+            <TextView
+                android:id="@+id/day4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{days.days[3].name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toStartOf="@+id/day5"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/day3"
+                app:layout_constraintTop_toTopOf="@+id/day1"
+                tools:text="Thurs" />
+
+            <TextView
+                android:id="@+id/day5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{days.days[4].name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toStartOf="@+id/day6"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/day4"
+                app:layout_constraintTop_toTopOf="@+id/day1"
+                tools:text="Fri" />
+
+            <TextView
+                android:id="@+id/day6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{days.days[5].name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toStartOf="@+id/day7"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/day5"
+                app:layout_constraintTop_toTopOf="@+id/day5"
+                tools:text="Sat" />
+
+            <TextView
+                android:id="@+id/day7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{days.days[6].name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/day6"
+                app:layout_constraintTop_toTopOf="@+id/day6"
+                tools:text="Sun" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_large"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:background="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit_black_24dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

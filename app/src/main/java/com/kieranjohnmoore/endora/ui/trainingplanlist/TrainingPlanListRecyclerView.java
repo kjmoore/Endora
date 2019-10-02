@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kieranjohnmoore.endora.databinding.TrainingPlanItemBinding;
+import com.kieranjohnmoore.endora.databinding.TrainingPlanListItemBinding;
 import com.kieranjohnmoore.endora.model.TrainingPlan;
 import com.kieranjohnmoore.endora.model.WeekWorkouts;
 import com.kieranjohnmoore.endora.ui.MainActivity;
@@ -27,8 +27,8 @@ public class TrainingPlanListRecyclerView extends RecyclerView.Adapter<TrainingP
     @Override
     public TrainingPlanViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         final LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
-        final TrainingPlanItemBinding itemBinding =
-                TrainingPlanItemBinding.inflate(layoutInflater, viewGroup, false);
+        final TrainingPlanListItemBinding itemBinding =
+                TrainingPlanListItemBinding.inflate(layoutInflater, viewGroup, false);
         return new TrainingPlanViewHolder(itemBinding);
     }
 
@@ -49,10 +49,10 @@ public class TrainingPlanListRecyclerView extends RecyclerView.Adapter<TrainingP
     }
 
     class TrainingPlanViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TrainingPlanItemBinding binding;
+        TrainingPlanListItemBinding binding;
         TrainingPlan trainingPlan;
 
-        TrainingPlanViewHolder(TrainingPlanItemBinding binding) {
+        TrainingPlanViewHolder(TrainingPlanListItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
             binding.getRoot().setOnClickListener(this);

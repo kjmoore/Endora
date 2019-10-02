@@ -3,11 +3,10 @@ package com.kieranjohnmoore.endora.database;
 import android.content.Context;
 import android.util.Log;
 
-import com.kieranjohnmoore.endora.database.dao.DayPlanDao;
 import com.kieranjohnmoore.endora.database.dao.ExerciseSetDao;
 import com.kieranjohnmoore.endora.database.dao.ExercisesDao;
 import com.kieranjohnmoore.endora.database.dao.TrainingPlanDao;
-import com.kieranjohnmoore.endora.model.DayPlan;
+import com.kieranjohnmoore.endora.database.dao.TrainingPlanDayDao;
 import com.kieranjohnmoore.endora.model.ExerciseSet;
 import com.kieranjohnmoore.endora.model.Exercises;
 import com.kieranjohnmoore.endora.model.TrainingPlan;
@@ -19,7 +18,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {TrainingPlan.class, DayPlan.class, Exercises.class, ExerciseSet.class}, version = 1, exportSchema = false)
+@Database(entities = {TrainingPlan.class, com.kieranjohnmoore.endora.model.TrainingPlanDay.class, Exercises.class, ExerciseSet.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String TAG = AppDatabase.class.getSimpleName();
     private static final Object LOCK = new Object();
@@ -49,5 +48,5 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract TrainingPlanDao trainingPlanDao();
     public abstract ExerciseSetDao exerciseSetDao();
     public abstract ExercisesDao exercisesDao();
-    public abstract DayPlanDao dayPlanDao();
+    public abstract TrainingPlanDayDao dayPlanDao();
 }

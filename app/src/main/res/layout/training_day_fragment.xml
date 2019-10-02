@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="plan_name"
+            name="day_number"
             type="String" />
     </data>
 
@@ -25,7 +25,7 @@
                 android:layout_height="?actionBarSize"
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/ToolbarPopUpTheme"
-                app:title="@{plan_name}"
+                app:title="@{day_number}"
                 />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -60,7 +60,7 @@
                 android:id="@+id/no_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/no_days"
+                android:text="@string/no_exercise"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

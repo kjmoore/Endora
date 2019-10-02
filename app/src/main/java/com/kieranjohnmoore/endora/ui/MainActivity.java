@@ -6,10 +6,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import com.kieranjohnmoore.endora.R;
-import com.kieranjohnmoore.endora.ui.dayplan.DayPlanFragment;
+import com.kieranjohnmoore.endora.ui.trainingplan.TrainingPlanFragment;
 import com.kieranjohnmoore.endora.ui.trainingplanlist.TrainingPlanListFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Navigation bundle: " + bundle);
 
             if (bundle != null) {
-                final Fragment fragment = new DayPlanFragment();
+                final Fragment fragment = new TrainingPlanFragment();
                 fragment.setArguments(bundle);
                 setFragment(fragment);
             } else {

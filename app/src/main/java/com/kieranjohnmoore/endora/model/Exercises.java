@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = DayPlan.class,
+@Entity(foreignKeys = @ForeignKey(entity = TrainingPlanDay.class,
         parentColumns = "id",
         childColumns = "day_plan_id"), tableName = "exercises")
 public class Exercises {

@@ -18,11 +18,9 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.loader.app.LoaderManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -64,8 +62,8 @@ public class TrainingPlanListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        final TrainingPlanViewModel viewModel
-                = ViewModelProviders.of(this).get(TrainingPlanViewModel.class);
+        final TrainingPlanListViewModel viewModel
+                = ViewModelProviders.of(this).get(TrainingPlanListViewModel.class);
         viewModel.getTrainingPlans().observe(this, this::onTrainingPlansChanged);
     }
 

@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="dayPlan"
-            type="com.kieranjohnmoore.endora.model.DayPlan" />
+            name="dayNumber"
+            type="Integer" />
         <variable
             name="exerciseSummary"
             type="String" />
@@ -28,11 +28,12 @@
             android:contentDescription="@null" />
 
         <TextView
-            android:id="@+id/day_number"
+            android:id="@+id/day_number_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin_small"
-            android:text="@{Integer.toString(dayPlan.day)}"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@{Integer.toString(dayNumber)}"
             app:layout_constraintStart_toEndOf="@+id/day_label"
             app:layout_constraintTop_toTopOf="@+id/day_label"
             tools:text="1" />
@@ -42,8 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin_large"
-            android:layout_marginTop="@dimen/text_margin_large"
             android:text="@{exerciseSummary}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Bench Press, L-sit, 10 Min Run" />
@@ -53,8 +54,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin_large"
-            android:layout_marginTop="@dimen/text_margin_large"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="@string/day"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
