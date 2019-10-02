@@ -10,13 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.databinding.ExerciseSetFragmentBinding;
 import com.kieranjohnmoore.endora.model.Exercise;
 import com.kieranjohnmoore.endora.model.ExerciseSet;
-import com.kieranjohnmoore.endora.model.TrainingPlan;
 import com.kieranjohnmoore.endora.ui.MainActivity;
 
 import java.util.Collections;
@@ -76,8 +74,6 @@ public class ExerciseSetFragment extends Fragment {
 
             AppDatabase.getExecutor().execute(() -> {
                 AppDatabase.getInstance(getContext()).exerciseSetDao().addExerciseSet(exerciseSet);
-                Snackbar.make(view, "Added: " + exerciseSet.id, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             });
         });
 

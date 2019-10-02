@@ -73,7 +73,7 @@ public class TrainingPlanRecyclerView extends RecyclerView.Adapter<TrainingPlanR
 
             final Intent intent = new Intent(MainActivity.DAY_PLAN_FRAG);
             intent.putExtra(MainActivity.ID_PARAM, trainingPlanDay.id);
-            intent.putExtra(MainActivity.NAME_PARAM, "" + dayNumber);
+            intent.putExtra(MainActivity.NAME_PARAM, "" + (dayNumber + 1));
             LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
         }
     }

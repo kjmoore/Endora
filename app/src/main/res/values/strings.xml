@@ -18,4 +18,6 @@
     <string name="plan_name">Enter Plan Name</string>
     <string name="plan_name_label">Plan Name:</string>
     <string name="delete">Delete</string>
+    <string name="new_plan">New Plan</string>
+    <string name="new_exercise">New Exercise</string>
 </resources>

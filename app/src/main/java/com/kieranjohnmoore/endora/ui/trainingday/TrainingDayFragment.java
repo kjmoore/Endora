@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.databinding.TrainingDayFragmentBinding;
@@ -57,7 +56,7 @@ public class TrainingDayFragment extends Fragment {
         viewModel.getExercises().observe(this, this::onExercisesChanged);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.training_day_fragment, container, false);
-        binding.setTitle(trainingDayName);
+        binding.setTitle(getString(R.string.day) + " " + trainingDayName);
 
         recyclerView = new TrainingDayRecyclerView(trainingDayId);
 
@@ -73,12 +72,10 @@ public class TrainingDayFragment extends Fragment {
         binding.fab.setOnClickListener(view -> {
             final Exercise exercise = new Exercise();
             exercise.dayPlanId = trainingDayId;
-            exercise.name = "Test Exercise";
+            exercise.name = getString(R.string.new_exercise);
 
             AppDatabase.getExecutor().execute(() -> {
                 AppDatabase.getInstance(getContext()).exerciseDao().addExercise(exercise);
-                Snackbar.make(view, "Added: " + exercise.id, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             });
         });
 

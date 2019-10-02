@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.ui.exerciseset.ExerciseSetFragment;
 import com.kieranjohnmoore.endora.ui.trainingday.TrainingDayFragment;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentTransaction.addToBackStack(null);
 
+//        Snackbar.make(view, "Added: " + exercise.id, Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show();
 //        if (isTabletMode) {
 //            mainBinding.selectArticle.setVisibility(View.INVISIBLE);
 //        }

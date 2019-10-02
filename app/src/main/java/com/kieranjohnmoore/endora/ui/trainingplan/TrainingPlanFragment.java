@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.databinding.TrainingPlanFragmentBinding;
@@ -74,8 +73,6 @@ public class TrainingPlanFragment extends Fragment {
 
             AppDatabase.getExecutor().execute(() -> {
                 AppDatabase.getInstance(getContext()).trainingPlanDayDao().addDayPlan(test);
-                Snackbar.make(view, "Added: " + test.id, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             });
         });
 

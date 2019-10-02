@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.databinding.TrainingPlanListFragmentBinding;
@@ -49,12 +48,10 @@ public class TrainingPlanListFragment extends Fragment {
 
         binding.fab.setOnClickListener(view -> {
             TrainingPlan test = new TrainingPlan();
-            test.name = Double.toString(Math.random());
+            test.name = getString(R.string.new_plan);
 
             AppDatabase.getExecutor().execute(() -> {
                 AppDatabase.getInstance(getContext()).trainingPlanDao().addTrainingPlan(test);
-                Snackbar.make(view, "Added: " + test.name, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             });
         });
         return binding.getRoot();
