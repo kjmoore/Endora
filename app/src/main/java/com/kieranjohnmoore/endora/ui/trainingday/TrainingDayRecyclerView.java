@@ -19,8 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TrainingDayRecyclerView extends RecyclerView.Adapter<TrainingDayRecyclerView.TrainingPlanViewHolder> {
     private final String TAG = TrainingDayRecyclerView.class.getSimpleName();
+    private final int dayId;
 
     private List<Exercise> exercises = Collections.emptyList();
+
+    TrainingDayRecyclerView(int dayId) {
+        this.dayId = dayId;
+    }
 
     @NonNull
     @Override
@@ -68,7 +73,7 @@ public class TrainingDayRecyclerView extends RecyclerView.Adapter<TrainingDayRec
             Log.d(TAG, "Clicked: " + exercise.name);
             final Intent intent = new Intent(MainActivity.EXERCISE_SET_FRAG);
             intent.putExtra(MainActivity.ID_PARAM, exercise.id);
-            intent.putExtra(MainActivity.NAME_PARAM, "" + exercise.name);
+            intent.putExtra(MainActivity.DAY_ID_PARAM, dayId);
             LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
         }
     }

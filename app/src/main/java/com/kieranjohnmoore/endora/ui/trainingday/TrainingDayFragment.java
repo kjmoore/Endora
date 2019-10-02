@@ -33,8 +33,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 public class TrainingDayFragment extends Fragment {
     private static final String TAG = TrainingDayFragment.class.getSimpleName();
 
-    private final TrainingDayRecyclerView recyclerView = new TrainingDayRecyclerView();
     private TrainingDayFragmentBinding binding;
+    private TrainingDayRecyclerView recyclerView;
+
     private int trainingDayId = -1;
     private String trainingDayName = "";
 
@@ -57,6 +58,8 @@ public class TrainingDayFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.training_day_fragment, container, false);
         binding.setTitle(trainingDayName);
+
+        recyclerView = new TrainingDayRecyclerView(trainingDayId);
 
         final Context context = getContext();
         if (context != null) {

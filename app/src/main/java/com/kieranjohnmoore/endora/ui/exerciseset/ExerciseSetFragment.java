@@ -37,7 +37,7 @@ public class ExerciseSetFragment extends Fragment {
     private final ExerciseSetRecyclerView recyclerView = new ExerciseSetRecyclerView();
     private ExerciseSetFragmentBinding binding;
     private int exerciseId = -1;
-    private String exerciseName = "";
+    private int dayplayId = -1;
 
     @Nullable
     @Override
@@ -46,7 +46,7 @@ public class ExerciseSetFragment extends Fragment {
 
         if (getArguments() != null) {
             exerciseId = getArguments().getInt(MainActivity.ID_PARAM);
-            exerciseName = getArguments().getString(MainActivity.NAME_PARAM);
+            dayplayId = getArguments().getInt(MainActivity.DAY_ID_PARAM);
         } else {
             Log.e(TAG, "Couldn't get ID");
         }
@@ -58,7 +58,6 @@ public class ExerciseSetFragment extends Fragment {
         viewModel.getExercise().observe(this, this::onExerciseChanged);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.exercise_set_fragment, container, false);
-        binding.setTitle(exerciseName);
 
         final Context context = getContext();
         if (context != null) {
@@ -116,7 +115,8 @@ public class ExerciseSetFragment extends Fragment {
                 AppDatabase.getExecutor().execute(() -> {
                     final Exercise exercise = new Exercise();
                     exercise.id = exerciseId;
-                    exerciseName = binding.selectedExercise.toString();
+                    exercise.dayPlanId = dayplayId;
+                    exercise.name = binding.selectedExercise.toString();
                     exercise.restBetweenSets = Integer.parseInt(binding.restTime.getText().toString());
                     AppDatabase.getInstance(getContext()).exerciseDao().updateExercise(exercise);
                     //TODO: store all of the changes in the exercise sets too

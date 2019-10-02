@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     public static final String ID_PARAM = "com.kieranjohnmoore.endura.id";
+    public static final String DAY_ID_PARAM = "com.kieranjohnmoore.endura.day_id";
     public static final String NAME_PARAM = "com.kieranjohnmoore.endura.name";
     public static final String DAY_PLAN_FRAG = "com.kieranjohnmoore.endura.day_plan_frag";
     public static final String TRAINING_PLAN_FRAG = "com.kieranjohnmoore.endura.training_plan_frag";
