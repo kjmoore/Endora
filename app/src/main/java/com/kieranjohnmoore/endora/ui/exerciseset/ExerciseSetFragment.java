@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
@@ -16,6 +17,7 @@ import com.kieranjohnmoore.endora.databinding.ExerciseSetFragmentBinding;
 import com.kieranjohnmoore.endora.model.Exercise;
 import com.kieranjohnmoore.endora.model.ExerciseSet;
 import com.kieranjohnmoore.endora.ui.MainActivity;
+import com.kieranjohnmoore.endora.ui.MainViewModel;
 
 import java.util.Collections;
 import java.util.List;
@@ -27,6 +29,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -38,6 +41,8 @@ public class ExerciseSetFragment extends Fragment {
     private int exerciseId = -1;
     private int dayplayId = -1;
     private List<ExerciseSet> exerciseSets = Collections.emptyList();
+    private List<String> exercisesList;
+    private Exercise exercise;
 
     @Nullable
     @Override
@@ -56,6 +61,9 @@ public class ExerciseSetFragment extends Fragment {
         final ExerciseSetViewModel viewModel = new ViewModelProvider(this, factory).get(ExerciseSetViewModel.class);
         viewModel.getSets().observe(this, this::onExercisesChanged);
         viewModel.getExercise().observe(this, this::onExerciseChanged);
+
+        final MainViewModel mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mainViewModel.getExercises().observe(this, this::onExercisesDownloaded);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.exercise_set_fragment, container, false);
 
@@ -114,7 +122,7 @@ public class ExerciseSetFragment extends Fragment {
                     final Exercise exercise = new Exercise();
                     exercise.id = exerciseId;
                     exercise.dayPlanId = dayplayId;
-                    exercise.name = binding.selectedExercise.toString();
+                    exercise.name = binding.selectedExercise.getSelectedItem().toString();
                     exercise.restBetweenSets = Integer.parseInt(binding.restTime.getText().toString());
                     AppDatabase.getInstance(getContext()).exerciseDao().updateExercise(exercise);
                     for (ExerciseSet set : exerciseSets) {
@@ -148,10 +156,32 @@ public class ExerciseSetFragment extends Fragment {
         }
     }
 
+    private void onExercisesDownloaded(List<String> exercises) {
+        final Context context = getContext();
+        if (context != null) {
+            this.exercisesList = exercises;
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, exercises);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.selectedExercise.setAdapter(adapter);
+            checkAndSetExercise();
+        }
+    }
+
+    private void checkAndSetExercise() {
+        if (exercise != null && exercisesList != null) {
+            if (exercisesList.contains(exercise.name)) {
+                int index = exercisesList.indexOf(exercise.name);
+                binding.selectedExercise.setSelection(index);
+            } else {
+                binding.selectedExercise.setSelection(0);
+            }
+        }
+    }
+
     private void onExerciseChanged(Exercise exercise) {
         binding.restTime.setText(String.format(Locale.getDefault(), "%d", exercise.restBetweenSets));
         binding.setTitle(exercise.name);
-        //TODO: generate this list and fill it
-//        binding.selectedExercise.setSelection(1);
+        this.exercise = exercise;
+        checkAndSetExercise();
     }
 }
