@@ -46,7 +46,7 @@ public class TrainingDayFragment extends Fragment {
             trainingDayId = getArguments().getInt(MainActivity.ID_PARAM);
             trainingDayName = getArguments().getString(MainActivity.NAME_PARAM);
         } else {
-            Log.e(TAG, "Couldn't get trainingPlanId");
+            Log.e(TAG, "Couldn't get ID");
         }
 
         final TrainingDayViewModel.Factory factory = new TrainingDayViewModel.Factory(requireActivity().getApplication(), trainingDayId);
@@ -119,7 +119,7 @@ public class TrainingDayFragment extends Fragment {
     }
 
     private void onExercisesChanged(List<Exercise> exercises) {
-        Log.e(TAG, "Training plans changed: " + Arrays.toString(exercises.toArray()));
+        Log.v(TAG, "Training plans changed: " + Arrays.toString(exercises.toArray()));
         recyclerView.updateExercises(exercises);
 
         binding.progressBar.setVisibility(View.INVISIBLE);

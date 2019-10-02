@@ -49,7 +49,7 @@ public class TrainingPlanFragment extends Fragment {
             trainingPlanId = getArguments().getInt(MainActivity.ID_PARAM);
             trainingPlanName = getArguments().getString(MainActivity.NAME_PARAM);
         } else {
-            Log.e(TAG, "Couldn't get trainingPlanId");
+            Log.e(TAG, "Couldn't get ID");
         }
 
         final TrainingPlanViewModel.Factory factory = new TrainingPlanViewModel.Factory(requireActivity().getApplication(), trainingPlanId);
@@ -121,7 +121,7 @@ public class TrainingPlanFragment extends Fragment {
     }
 
     private void onPlansChanged(List<TrainingPlanDay> trainingPlanDays) {
-        Log.e(TAG, "Training plans changed: " + Arrays.toString(trainingPlanDays.toArray()));
+        Log.v(TAG, "Training plans changed: " + Arrays.toString(trainingPlanDays.toArray()));
         recyclerView.updateDayPlans(trainingPlanDays);
 
         binding.progressBar.setVisibility(View.INVISIBLE);

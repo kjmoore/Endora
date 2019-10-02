@@ -69,7 +69,7 @@ public class TrainingPlanListFragment extends Fragment {
     }
 
     private void onTrainingPlansChanged(List<TrainingPlan> trainingPlans) {
-        Log.e(TAG, "Training plans changed: " + Arrays.toString(trainingPlans.toArray()));
+        Log.v(TAG, "Training plans changed: " + Arrays.toString(trainingPlans.toArray()));
         recyclerView.updateTrainingPlans(trainingPlans);
 
         binding.progressBar.setVisibility(View.INVISIBLE);

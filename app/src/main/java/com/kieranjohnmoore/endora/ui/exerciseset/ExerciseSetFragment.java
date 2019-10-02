@@ -46,7 +46,7 @@ public class ExerciseSetFragment extends Fragment {
             exerciseId = getArguments().getInt(MainActivity.ID_PARAM);
             exerciseName = getArguments().getString(MainActivity.NAME_PARAM);
         } else {
-            Log.e(TAG, "Couldn't get trainingPlanId");
+            Log.e(TAG, "Couldn't get ID");
         }
 
         final ExerciseSetViewModel.Factory factory = new ExerciseSetViewModel.Factory(requireActivity().getApplication(), exerciseId);
@@ -118,7 +118,6 @@ public class ExerciseSetFragment extends Fragment {
     }
 
     private void onExercisesChanged(List<ExerciseSet> exerciseSets) {
-        Log.e(TAG, "ExerciseSets changed: " + Arrays.toString(exerciseSets.toArray()));
         recyclerView.updateExercises(exerciseSets);
 
         binding.progressBar.setVisibility(View.INVISIBLE);
