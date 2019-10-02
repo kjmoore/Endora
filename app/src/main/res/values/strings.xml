@@ -20,4 +20,6 @@
     <string name="delete">Delete</string>
     <string name="new_plan">New Plan</string>
     <string name="new_exercise">New Exercise</string>
+    <string name="summary_label">Plan Summary:</string>
+    <string name="summary">Enter a summary of this day</string>
 </resources>

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.model.Exercise;
+import com.kieranjohnmoore.endora.model.TrainingPlanDay;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ class TrainingDayViewModel extends AndroidViewModel {
     private static String TAG = TrainingDayViewModel.class.getSimpleName();
 
     private LiveData<List<Exercise>> exercises;
+    private LiveData<TrainingPlanDay> trainingDay;
 
     private TrainingDayViewModel(@NonNull Application application, int id) {
         super(application);
@@ -25,10 +27,14 @@ class TrainingDayViewModel extends AndroidViewModel {
         Log.d(TAG, "Created new Day Plan View Model");
 
         exercises = AppDatabase.getInstance(this.getApplication()).exerciseDao().getExercisesForDay(id);
+        trainingDay = AppDatabase.getInstance(this.getApplication()).trainingPlanDayDao().getTrainingPlanDay(id);
     }
 
     LiveData<List<Exercise>> getExercises() {
         return exercises;
+    }
+    LiveData<TrainingPlanDay> getTrainingDay() {
+        return trainingDay;
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {

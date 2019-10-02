@@ -36,6 +36,7 @@ public class TrainingDayFragment extends Fragment {
     private TrainingDayRecyclerView recyclerView;
 
     private int trainingDayId = -1;
+    private int trainingPlanId = -1;
     private String trainingDayName = "";
 
     @Nullable
@@ -45,6 +46,7 @@ public class TrainingDayFragment extends Fragment {
 
         if (getArguments() != null) {
             trainingDayId = getArguments().getInt(MainActivity.ID_PARAM);
+            trainingPlanId = getArguments().getInt(MainActivity.TRAINING_PLAN_ID);
             trainingDayName = getArguments().getString(MainActivity.NAME_PARAM);
         } else {
             Log.e(TAG, "Couldn't get ID");
@@ -54,6 +56,7 @@ public class TrainingDayFragment extends Fragment {
 
         final TrainingDayViewModel viewModel = new ViewModelProvider(this, factory).get(TrainingDayViewModel.class);
         viewModel.getExercises().observe(this, this::onExercisesChanged);
+        viewModel.getTrainingDay().observe(this, this::onTrainingDataChanged);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.training_day_fragment, container, false);
         binding.setTitle(getString(R.string.day) + " " + trainingDayName);
@@ -109,8 +112,16 @@ public class TrainingDayFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-            case R.id.done:
                 goBack();
+                break;
+            case R.id.done:
+                AppDatabase.getExecutor().execute(() -> {
+                    final TrainingPlanDay day = new TrainingPlanDay();
+                    day.id = trainingDayId;
+                    day.trainingPlanId = trainingPlanId;
+                    day.summery = binding.trainingDaySummaryInput.getText().toString();
+                    AppDatabase.getInstance(getContext()).trainingPlanDayDao().updateDayPlan(day);
+                });
                 break;
             case R.id.delete:
                 AppDatabase.getExecutor().execute(() -> {
@@ -134,5 +145,10 @@ public class TrainingDayFragment extends Fragment {
         if (exercises.size() > 0) {
             binding.noData.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void onTrainingDataChanged(TrainingPlanDay day) {
+        Log.v(TAG, "Training day changed: " + day);
+        binding.trainingDaySummaryInput.setText(day.summery);
     }
 }

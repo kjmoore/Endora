@@ -17,4 +17,5 @@ public class TrainingPlanDay {
     public int id;
     @ColumnInfo(name = "training_plan_id")
     public int trainingPlanId;
+    public String summery;
 }

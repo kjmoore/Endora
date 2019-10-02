@@ -32,7 +32,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 public class TrainingPlanFragment extends Fragment {
     private static final String TAG = TrainingPlanFragment.class.getSimpleName();
 
-    private final TrainingPlanRecyclerView recyclerView = new TrainingPlanRecyclerView();
+    private TrainingPlanRecyclerView recyclerView;
     private TrainingPlanFragmentBinding binding;
     private int trainingPlanId = -1;
     private String trainingPlanName = "";
@@ -48,6 +48,8 @@ public class TrainingPlanFragment extends Fragment {
         } else {
             Log.e(TAG, "Couldn't get ID");
         }
+
+        recyclerView = new TrainingPlanRecyclerView(trainingPlanId);
 
         final TrainingPlanViewModel.Factory factory = new TrainingPlanViewModel.Factory(requireActivity().getApplication(), trainingPlanId);
 

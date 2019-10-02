@@ -20,7 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TrainingPlanRecyclerView extends RecyclerView.Adapter<TrainingPlanRecyclerView.TrainingPlanViewHolder> {
     private final String TAG = TrainingPlanRecyclerView.class.getSimpleName();
 
+    private final int trainingPlanId;
     private List<TrainingPlanDay> trainingPlanDays = Collections.emptyList();
+
+    TrainingPlanRecyclerView(int trainingPlanId) {
+        this.trainingPlanId = trainingPlanId;
+    }
 
     @NonNull
     @Override
@@ -62,8 +67,7 @@ public class TrainingPlanRecyclerView extends RecyclerView.Adapter<TrainingPlanR
             this.trainingPlanDay = trainingPlanDay;
             this.dayNumber = dayNumber;
             binding.setDayNumber(dayNumber + 1);
-            //TODO: Work out Exercise list
-            binding.setExerciseSummary("TEST");
+            binding.setExerciseSummary(trainingPlanDay.summery);
             binding.executePendingBindings();
         }
 
@@ -73,6 +77,7 @@ public class TrainingPlanRecyclerView extends RecyclerView.Adapter<TrainingPlanR
 
             final Intent intent = new Intent(MainActivity.DAY_PLAN_FRAG);
             intent.putExtra(MainActivity.ID_PARAM, trainingPlanDay.id);
+            intent.putExtra(MainActivity.TRAINING_PLAN_ID, trainingPlanId);
             intent.putExtra(MainActivity.NAME_PARAM, "" + (dayNumber + 1));
             LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
         }
