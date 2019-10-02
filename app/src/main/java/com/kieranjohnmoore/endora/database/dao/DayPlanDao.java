@@ -16,9 +16,9 @@ public interface DayPlanDao {
     @Query("SELECT * FROM day_plan WHERE training_plan_id = :id")
     LiveData<List<DayPlan>> getDayPlansForTrainingPlan(int id);
     @Insert
-    void addDayPlan(TrainingPlan trainingPlan);
+    void addDayPlan(DayPlan trainingPlan);
     @Delete
-    void deleteTrainingPlan(TrainingPlan trainingPlan);
+    void deleteDayPlan(DayPlan trainingPlan);
     @Query("SELECT * FROM day_plan WHERE id = :id")
-    LiveData<TrainingPlan> getDayPlan(int id);
+    LiveData<DayPlan> getDayPlan(int id);
 }

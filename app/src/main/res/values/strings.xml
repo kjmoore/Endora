@@ -7,4 +7,6 @@
     <string name="exercise">Select Exercise: </string>
     <string name="add_sets">No sets added, click the plus to add some!</string>
     <string name="set_rest_time">Set Rest Time</string>
+    <string name="no_days">No days have been added, hit the plus to add one</string>
+    <string name="day">Day</string>
 </resources>

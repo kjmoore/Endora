@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="plan_name"
+            type="String" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,16 +22,18 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="?actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:popupTheme="@style/ToolbarPopUpTheme" />
+                app:popupTheme="@style/ToolbarPopUpTheme"
+                app:title="@{plan_name}"
+                />
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".activity.MainActivity">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_view"
@@ -51,11 +60,12 @@
                 android:id="@+id/no_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/no_data"
+                android:text="@string/no_days"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -65,7 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/plus_icon" />
+            app:srcCompat="@drawable/plus_icon"
+            />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
