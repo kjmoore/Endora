@@ -14,4 +14,5 @@
     <string name="reps">Reps</string>
     <string name="weight">Weight (kg)</string>
     <string name="rest_time">Rest Time</string>
+    <string name="done">Done</string>
 </resources>

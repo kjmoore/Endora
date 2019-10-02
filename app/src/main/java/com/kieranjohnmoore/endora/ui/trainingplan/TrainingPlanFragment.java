@@ -53,7 +53,7 @@ public class TrainingPlanFragment extends Fragment {
         viewModel.getDayPlans().observe(this, this::onPlansChanged);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.training_plan_fragment, container, false);
-        binding.setPlanName(trainingPlanName);
+        binding.setTitle(trainingPlanName);
 
         final Context context = getContext();
         if (context != null) {

@@ -51,7 +51,7 @@ public class TrainingDayFragment extends Fragment {
         viewModel.getExercises().observe(this, this::onExercisesChanged);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.training_day_fragment, container, false);
-        binding.setDayNumber(trainingDayName);
+        binding.setTitle(trainingDayName);
 
         final Context context = getContext();
         if (context != null) {

@@ -9,6 +9,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 @Dao
 public interface ExerciseSetDao {
@@ -20,4 +21,6 @@ public interface ExerciseSetDao {
     void deleteExercies(ExerciseSet exercises);
     @Query("SELECT * FROM exercise_set WHERE id = :id")
     LiveData<ExerciseSet> getExerciseSet(int id);
+    @Update
+    void updateExerciseSet(ExerciseSet set);
 }

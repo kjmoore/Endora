@@ -36,6 +36,7 @@ public class TrainingPlanListFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.training_plan_list_fragment, container, false);
+        binding.setTitle(getString(R.string.app_name));
 
         final Context context = getContext();
         if (context != null) {

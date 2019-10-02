@@ -1,9 +1,12 @@
 package com.kieranjohnmoore.endora.ui.exerciseset;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.databinding.ExerciseSetItemBinding;
 import com.kieranjohnmoore.endora.model.ExerciseSet;
 
@@ -51,6 +54,20 @@ public class ExerciseSetRecyclerView extends RecyclerView.Adapter<ExerciseSetRec
         ExerciseSetViewHolder(ExerciseSetItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+            binding.repsNumberField.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) { }
+                @Override
+                public void afterTextChanged(Editable s) {
+                    Log.v(TAG, "Setting reps to:" + s.toString());
+                    AppDatabase.getExecutor().execute(() -> {
+                        set.numberOfReps = Integer.parseInt(s.toString());
+                        AppDatabase.getInstance(binding.getRoot().getContext()).exerciseSetDao().updateExerciseSet(set);
+                    });
+                }
+            });
         }
 
         private void bind(@NonNull final ExerciseSet set, int id) {
