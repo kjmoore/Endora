@@ -1,6 +1,6 @@
 package com.kieranjohnmoore.endora.database.dao;
 
-import com.kieranjohnmoore.endora.model.Exercises;
+import com.kieranjohnmoore.endora.model.Exercise;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import androidx.room.Query;
 
 @Dao
 public interface ExercisesDao {
-    @Query("SELECT * FROM exercises WHERE day_plan_id = :id")
-    LiveData<List<Exercises>> getExerciesForDay(int id);
+    @Query("SELECT * FROM Exercise WHERE day_plan_id = :id")
+    LiveData<List<Exercise>> getExercisesForDay(int id);
     @Insert
-    void addExercises(Exercises trainingPlan);
+    void addExercise(Exercise trainingPlan);
     @Delete
-    void deleteExercies(Exercises exercises);
-    @Query("SELECT * FROM exercises WHERE id = :id")
-    LiveData<Exercises> getExercies(int id);
+    void deleteExercie(Exercise exercise);
+    @Query("SELECT * FROM Exercise WHERE id = :id")
+    LiveData<Exercise> getExercie(int id);
 }

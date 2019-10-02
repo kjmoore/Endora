@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
         parentColumns = "id",
         childColumns = "exercises_id"), tableName = "exercise_set")
 public class ExerciseSet {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
     @ColumnInfo(name = "exercises_id")
     public int exercisesId;

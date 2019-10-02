@@ -1,5 +1,6 @@
 package com.kieranjohnmoore.endora.ui.trainingplan;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,11 +8,13 @@ import android.view.ViewGroup;
 
 import com.kieranjohnmoore.endora.databinding.TrainingPlanItemBinding;
 import com.kieranjohnmoore.endora.model.TrainingPlanDay;
+import com.kieranjohnmoore.endora.ui.MainActivity;
 
 import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TrainingPlanRecyclerView extends RecyclerView.Adapter<TrainingPlanRecyclerView.TrainingPlanViewHolder> {
@@ -47,6 +50,7 @@ public class TrainingPlanRecyclerView extends RecyclerView.Adapter<TrainingPlanR
     class TrainingPlanViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TrainingPlanItemBinding binding;
         TrainingPlanDay trainingPlanDay;
+        int dayNumber;
 
         TrainingPlanViewHolder(TrainingPlanItemBinding binding) {
             super(binding.getRoot());
@@ -56,6 +60,7 @@ public class TrainingPlanRecyclerView extends RecyclerView.Adapter<TrainingPlanR
 
         private void bind(@NonNull final TrainingPlanDay trainingPlanDay, final int dayNumber) {
             this.trainingPlanDay = trainingPlanDay;
+            this.dayNumber = dayNumber;
             binding.setDayNumber(dayNumber + 1);
             //TODO: Work out Exercise list
             binding.setExerciseSummary("TEST");
@@ -65,9 +70,11 @@ public class TrainingPlanRecyclerView extends RecyclerView.Adapter<TrainingPlanR
         @Override
         public void onClick(View v) {
             Log.d(TAG, "Clicked: " + trainingPlanDay.id);
-//            final Intent intent = new Intent(MainActivity.VIEW_ARTICLE);
-//            intent.putExtra(MainActivity.ARTICLE_SELECTED, trainingPlan);
-//            LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
+
+            final Intent intent = new Intent(MainActivity.DAY_PLAN_FRAG);
+            intent.putExtra(MainActivity.ID_PARAM, trainingPlanDay.id);
+            intent.putExtra(MainActivity.NAME_PARAM, "" + dayNumber);
+            LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
         }
     }
 }

@@ -70,7 +70,7 @@ public class TrainingPlanListRecyclerView extends RecyclerView.Adapter<TrainingP
         public void onClick(View v) {
             Log.d(TAG, "Clicked: " + trainingPlan.name);
 
-            final Intent intent = new Intent(MainActivity.DAY_PLAN_FRAG);
+            final Intent intent = new Intent(MainActivity.TRAINING_PLAN_FRAG);
             intent.putExtra(MainActivity.ID_PARAM, trainingPlan.id);
             intent.putExtra(MainActivity.NAME_PARAM, trainingPlan.name);
             LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
