@@ -28,7 +28,7 @@
             android:contentDescription="@null" />
 
         <TextView
-            android:id="@+id/day_number_field"
+            android:id="@+id/set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin_small"

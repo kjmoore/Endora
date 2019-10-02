@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="setNumber"
+            type="int" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_small"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/set"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/setNumberField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_small"
+            app:layout_constraintStart_toEndOf="@+id/set"
+            app:layout_constraintTop_toTopOf="@+id/set"
+            app:text="@{Integer.toString(setNumber)}"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/reps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:fontFamily="sans-serif-smallcaps"
+            android:labelFor="@id/repsNumberField"
+            android:text="@string/reps"
+            app:layout_constraintEnd_toStartOf="@+id/repsNumberField"
+            app:layout_constraintTop_toTopOf="@+id/weightNumberField" />
+
+        <EditText
+            android:id="@+id/repsNumberField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:ems="5"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/reps" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_large"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:fontFamily="sans-serif-smallcaps"
+            android:labelFor="@id/weightNumberField"
+            android:text="@string/weight"
+            app:layout_constraintEnd_toStartOf="@+id/weightNumberField"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/weightNumberField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:ems="5"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            app:layout_constraintEnd_toStartOf="@+id/reps"
+            app:layout_constraintTop_toTopOf="@+id/weight" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repsNumberField" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

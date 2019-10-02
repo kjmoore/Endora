@@ -10,4 +10,8 @@
     <string name="no_days">No days have been added, hit the plus to add one</string>
     <string name="day">Day</string>
     <string name="no_exercise">No exercise have been added, click the plus to add some</string>
+    <string name="set">Set</string>
+    <string name="reps">Reps</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="rest_time">Rest Time</string>
 </resources>

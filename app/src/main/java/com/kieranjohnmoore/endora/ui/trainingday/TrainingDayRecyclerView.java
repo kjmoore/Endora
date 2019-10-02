@@ -1,19 +1,20 @@
 package com.kieranjohnmoore.endora.ui.trainingday;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.kieranjohnmoore.endora.databinding.TrainingDayItemBinding;
-import com.kieranjohnmoore.endora.databinding.TrainingPlanItemBinding;
 import com.kieranjohnmoore.endora.model.Exercise;
-import com.kieranjohnmoore.endora.model.TrainingPlanDay;
+import com.kieranjohnmoore.endora.ui.MainActivity;
 
 import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TrainingDayRecyclerView extends RecyclerView.Adapter<TrainingDayRecyclerView.TrainingPlanViewHolder> {
@@ -65,9 +66,10 @@ public class TrainingDayRecyclerView extends RecyclerView.Adapter<TrainingDayRec
         @Override
         public void onClick(View v) {
             Log.d(TAG, "Clicked: " + exercise.name);
-//            final Intent intent = new Intent(MainActivity.VIEW_ARTICLE);
-//            intent.putExtra(MainActivity.ARTICLE_SELECTED, trainingPlan);
-//            LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
+            final Intent intent = new Intent(MainActivity.EXERCISE_SET_FRAG);
+            intent.putExtra(MainActivity.ID_PARAM, exercise.id);
+            intent.putExtra(MainActivity.NAME_PARAM, "" + exercise.name);
+            LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
         }
     }
 }

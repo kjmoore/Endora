@@ -15,7 +15,7 @@ public interface ExerciseSetDao {
     @Query("SELECT * FROM exercise_set WHERE exercises_id = :id")
     LiveData<List<ExerciseSet>> getSetForExercise(int id);
     @Insert
-    void addExercises(ExerciseSet trainingPlan);
+    void addExerciseSet(ExerciseSet trainingPlan);
     @Delete
     void deleteExercies(ExerciseSet exercises);
     @Query("SELECT * FROM exercise_set WHERE id = :id")
