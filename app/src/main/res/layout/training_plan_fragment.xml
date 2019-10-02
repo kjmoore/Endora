@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         tools:context=".ui.trainingplanlist.TrainingPlanListFragment">
 
-        <include layout="@layout/app_bar" app:title="@{title}"/>
+        <include layout="@layout/app_bar" app:title="@{title}" android:id="@+id/appbar"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
