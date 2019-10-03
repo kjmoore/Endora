@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.ui.exerciseset.ExerciseSetFragment;
 import com.kieranjohnmoore.endora.ui.trainingday.TrainingDayFragment;
 import com.kieranjohnmoore.endora.ui.trainingplan.TrainingPlanFragment;
 import com.kieranjohnmoore.endora.ui.trainingplanlist.TrainingPlanListFragment;
+import com.kieranjohnmoore.endora.ui.workout.WorkoutFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String DAY_PLAN_FRAG = "com.kieranjohnmoore.endura.day_plan_frag";
     public static final String TRAINING_PLAN_FRAG = "com.kieranjohnmoore.endura.training_plan_frag";
     public static final String EXERCISE_SET_FRAG = "com.kieranjohnmoore.endura.exercise_set_frag";
+    public static final String WORKOUT_FRAG = "com.kieranjohnmoore.endura.workout";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         broadcastManager.registerReceiver(viewTrainingPlan, new IntentFilter(TRAINING_PLAN_FRAG));
         broadcastManager.registerReceiver(viewDayPlan, new IntentFilter(DAY_PLAN_FRAG));
         broadcastManager.registerReceiver(viewExerciseSet, new IntentFilter(EXERCISE_SET_FRAG));
+        broadcastManager.registerReceiver(viewWorkout, new IntentFilter(WORKOUT_FRAG));
     }
 
     private void setFragment(Fragment fragment) {
@@ -61,11 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentTransaction.addToBackStack(null);
 
-//        Snackbar.make(view, "Added: " + exercise.id, Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show();
-//        if (isTabletMode) {
-//            mainBinding.selectArticle.setVisibility(View.INVISIBLE);
-//        }
         fragmentTransaction.commit();
     }
 
@@ -105,6 +101,14 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private BroadcastReceiver viewWorkout = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, "Navigating to exercise set");
+            final Fragment fragment = new WorkoutFragment();
+            getDataAndSetFragment(intent, fragment);
+        }
+    };
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -112,5 +116,7 @@ public class MainActivity extends AppCompatActivity {
         final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
         broadcastManager.unregisterReceiver(viewTrainingPlan);
         broadcastManager.unregisterReceiver(viewDayPlan);
+        broadcastManager.unregisterReceiver(viewExerciseSet);
+        broadcastManager.unregisterReceiver(viewWorkout);
     }
 }

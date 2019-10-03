@@ -1,6 +1,7 @@
 package com.kieranjohnmoore.endora.ui.trainingplanlist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import com.kieranjohnmoore.endora.R;
 import com.kieranjohnmoore.endora.database.AppDatabase;
 import com.kieranjohnmoore.endora.databinding.TrainingPlanListFragmentBinding;
 import com.kieranjohnmoore.endora.model.TrainingPlan;
+import com.kieranjohnmoore.endora.ui.MainActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +22,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -54,6 +57,13 @@ public class TrainingPlanListFragment extends Fragment {
                 AppDatabase.getInstance(getContext()).trainingPlanDao().addTrainingPlan(test);
             });
         });
+
+        binding.workoutButton.setOnClickListener(view -> {
+            final Intent intent = new Intent(MainActivity.WORKOUT_FRAG);
+            intent.putExtra(MainActivity.ID_PARAM, 0);
+            LocalBroadcastManager.getInstance(view.getContext()).sendBroadcast(intent);
+        });
+
         return binding.getRoot();
     }
 

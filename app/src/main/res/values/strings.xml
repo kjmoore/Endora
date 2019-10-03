@@ -22,4 +22,8 @@
     <string name="new_exercise">New Exercise</string>
     <string name="summary_label">Plan Summary:</string>
     <string name="summary">Enter a summary of this day</string>
+    <string name="workout_now">Workout Now!</string>
+    <string name="set_workout_time">Set workout time in mins:</string>
+    <string name="send_to_google">Send To Google</string>
+    <string name="permission_approved">Permission approved, you can now continue</string>
 </resources>
