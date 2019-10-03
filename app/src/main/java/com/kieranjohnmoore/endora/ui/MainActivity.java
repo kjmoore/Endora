@@ -7,7 +7,10 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.kieranjohnmoore.endora.R;
+import com.kieranjohnmoore.endora.databinding.ActivityMainBinding;
 import com.kieranjohnmoore.endora.ui.exerciseset.ExerciseSetFragment;
 import com.kieranjohnmoore.endora.ui.trainingday.TrainingDayFragment;
 import com.kieranjohnmoore.endora.ui.trainingplan.TrainingPlanFragment;
@@ -15,6 +18,7 @@ import com.kieranjohnmoore.endora.ui.trainingplanlist.TrainingPlanListFragment;
 import com.kieranjohnmoore.endora.ui.workout.WorkoutFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -41,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, new TrainingPlanListFragment())
                     .commitNow();
         }
+
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
 
         final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
         broadcastManager.registerReceiver(viewTrainingPlan, new IntentFilter(TRAINING_PLAN_FRAG));
