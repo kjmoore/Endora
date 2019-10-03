@@ -7,6 +7,8 @@ import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +74,33 @@ public class WorkoutFragment extends Fragment {
             }
 
             updateWidget();
+        });
 
+        binding.pushToFit.setEnabled(false);
+
+        binding.workoutTime.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                final String text = s.toString();
+                if (!(text.matches("[0-9]+") && text.length() >= 1)) {
+                    binding.workoutWrapper.setError(getString(R.string.workout_time_error));
+                    binding.pushToFit.setEnabled(false);
+                } else {
+                    if (Integer.parseInt(text) > 0) {
+                        binding.workoutWrapper.setError(null);
+                        binding.pushToFit.setEnabled(true);
+                    } else {
+                        binding.workoutWrapper.setError(getString(R.string.workout_time_too_small));
+                        binding.pushToFit.setEnabled(false);
+                    }
+                }
+            }
         });
 
         return binding.getRoot();

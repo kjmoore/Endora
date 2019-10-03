@@ -34,4 +34,7 @@
     <string name="fri">Fri</string>
     <string name="sat">Sat</string>
     <string name="sun">Sun</string>
+    <string name="edit">Edit</string>
+    <string name="workout_time_error">Workout time should only contain numbers</string>
+    <string name="workout_time_too_small">Workout time must be greater than 0</string>
 </resources>
